@@ -1,0 +1,102 @@
+*{
+  box-sizing: border-box;
+}
+#container{
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  
+}
+.bookCard{
+  border: 2px solid royalblue;
+  padding: 16px;
+  border-radius: 10px;
+  width: 200px;
+  background-color: rgb(252, 252, 252);
+  box-shadow: 0 0 2px rgba(0, 0, 0, 0.5);
+
+}
+
+.bookCard .title{
+  font-size: 20px;
+}
+.bookCard .author{
+  font-style: italic;
+  font-size: 16px;
+}
+
+.bookCard .readStatus{
+  color: royalblue;
+}
+
+button{
+  margin-bottom: 16px;
+  border:none;
+  color: white;
+  background-color: royalblue;
+  padding: 10px 16px;
+  border-radius: 10px;
+}
+
+dialog{
+  border: 2px solid royalblue;
+  border-radius: 10px;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+  padding: 30px 20px;
+}
+
+dialog::backdrop{
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+dialog form div:not(.label){
+  display: grid;
+  grid-template-columns: 80px 1fr;
+  margin-bottom: 10px;
+}
+
+.label{
+  margin-bottom: 10px;
+}
+
+form input{
+  padding: 5px 10px;
+  border-radius: 5px;
+  border: 1px solid grey;
+}
+
+form input:focus{
+  outline-color: royalblue;
+}
+
+.close-btn{
+  margin-left: 100px;
+  background-color: rgb(168, 6, 6);
+  cursor: pointer;
+  transition: background-color 0.25s;
+}
+
+.close-btn:hover{
+  background-color: red;
+}
+
+.add-to-lib{
+  cursor: pointer;
+  transition: background-color 0.25s;
+}
+
+.add-to-lib:hover{
+  background-color: blue;
+}
+
+.removeBtn{
+  cursor: pointer;
+  background-color: darkred;
+  transition: background-color 0.25s;
+  display: block;
+  margin-top: 10px;
+}
+
+.removeBtn:hover{
+  background-color: red;
+}

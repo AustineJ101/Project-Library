@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Project Library</title>
+  <link rel="stylesheet" href="./styles.css">
+</head>
+<body>
+  <h1>Project Library</h1>
+
+  <button>Add New Book</button>
+
+  <dialog>
+    <form method="dialog">
+      <div>
+        <label for="title">Book Title:</label>
+        <input  type="text" id="title" required>
+      </div>
+
+      <div>
+        <label for="author">Author:</label>
+        <input  type="text" id="author" required>
+      </div>
+
+      <div>
+        <label for="pages">Pages:</label>
+        <input type="number" id="pages" required>
+      </div>
+
+      <div class="label">
+        <label for="readStatus">Have you read it?</label>
+        <select id="readStatus">
+          <option value="Read" selected>Yes</option>
+          <option value="Not Read">No</option>
+        </select>
+      </div>
+
+      <button class="add-to-lib">Add to library</button>
+      <button class="close-btn">Close</button>
+    </form>
+  </dialog>
+  <div id="container">
+
+  </div>
+
+  <script src="./index.js"></script>
+</body>
+</html>
