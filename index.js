@@ -1,20 +1,40 @@
 const myLibrary = [];
-
-function Book(title, author, pages, isRead ){
-  this.title = title;
-  this.author = author;
-  this.pages = pages;
-  this.isRead = isRead;
-
-}
-
-function addBookToLibrary(title, author, pages, isRead){
-  const newBook = new Book(title, author, pages, isRead);
-  myLibrary.push(newBook);
-}
-
-
 let booksContainer = document.querySelector("#container");
+
+class Book {
+  constructor(title, author, pages, isRead){
+    this.title = title;
+    this.author = author;
+    this.pages = pages;
+    this.isRead = isRead;
+  }
+
+  // Class Level Method
+  static addBookToLibrary(title, author, pages, isRead){
+    const newBook =  new Book(title, author, pages, isRead);
+    myLibrary.push(newBook);
+
+  }
+
+  static removeFromLibrary(index){
+    myLibrary.splice(index, 1);
+  }
+  
+  static displayBook(book){
+    const bookCard = createBookCard();
+
+    bookCard.children[0].textContent = book.title;
+    bookCard.children[1].textContent = `By: ${book.author}`;
+    bookCard.children[2].textContent = `${book.pages} pages`;
+    bookCard.children[3].textContent = book.isRead;
+    bookCard.children[4].textContent = "Remove"
+    
+    booksContainer.appendChild(bookCard);
+  
+  }
+
+}
+
 
 function createBookCard(){
   let bookCard = document.createElement("div");
@@ -35,11 +55,10 @@ function createBookCard(){
 
 
   removeBtn.addEventListener("click", ()=>{
-    booksContainer.removeChild(bookCard);
-
-   const index = bookCard.getAttribute("data-index")
-    myLibrary.splice(index, 1);
-    console.log(myLibrary)
+    const index = bookCard.getAttribute("data-index");
+    Book.removeFromLibrary(index);
+    booksContainer.removeChild(bookCard); 
+    
   })
 
   const book = [title, author, pages, isRead, removeBtn]
@@ -48,20 +67,6 @@ function createBookCard(){
 
   return bookCard;
 }
-
-function displayBook(book){
-  const bookCard = createBookCard();
-
-  bookCard.children[0].textContent = book.title;
-  bookCard.children[1].textContent = `By: ${book.author}`;
-  bookCard.children[2].textContent = `${book.pages} pages`;
-  bookCard.children[3].textContent = book.isRead;
-  bookCard.children[4].textContent = "Remove"
-  
-  booksContainer.appendChild(bookCard);
-
-}
-
 
 const addBtn  = document.querySelector("button");
 
@@ -87,11 +92,11 @@ closeBtn.addEventListener("click", ()=>{
 });
  
 
-addToLib.addEventListener("click", (event)=>{
+addToLib.addEventListener("click", ()=>{
 
   if(title.value && author.value && pages.value){
-    addBookToLibrary(title.value, author.value, pages.value, isRead.value);
-    displayBook(myLibrary[myLibrary.length - 1]);
+    Book.addBookToLibrary(title.value, author.value, pages.value, isRead.value);
+    Book.displayBook(myLibrary[myLibrary.length - 1]);
 
   }
   
